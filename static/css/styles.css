@@ -1,0 +1,88 @@
+
+.relation {
+	border: 2px solid #ccc;
+}
+
+ .form-popup {
+    display: none;
+    position: fixed;
+    border: 2px solid #ccc;
+    bottom: 100px;
+    right: 600px;
+}
+
+.form-container .cancel {
+    background-color: red;
+}
+
+
+
+.new_ontology{
+	float: right;
+}
+
+.treeHTML {
+  line-height: normal;
+}
+.treeHTML details {
+  display: block;
+}
+.treeHTML div {
+  position: relative;
+  margin: 0 0 0 .5em;
+  padding: 0 0 0 1.2em;
+}
+.treeHTML div:not(:last-child) { 
+  border-left: 1px solid #ccc;
+}
+.treeHTML div:before { 
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1.1em;
+  height: .5em;
+  border-bottom: 1px solid #ccc;
+}
+.treeHTML div:last-child:before { 
+  border-left: 1px solid #ccc;
+}
+.treeHTML summary { 
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+}
+.treeHTML details[open] summary {} 
+
+.tabs { width: 100%; padding: 0px; margin: 0 auto; }
+.tabs>input { display: none; }
+.tabs>div {
+    display: none;
+    padding: 12px;
+    border: 1px solid #C0C0C0;
+    background: #FFFFFF;
+}
+.tabs>label {
+    display: inline-block;
+    padding: 7px;
+    margin: 0 -5px -1px 0;
+    text-align: center;
+    color: #666666;
+    border: 1px solid #C0C0C0;
+    background: #E0E0E0;
+    cursor: pointer;
+}
+.tabs>input:checked + label {
+    color: #000000;
+    border: 1px solid #C0C0C0;
+    border-bottom: 1px solid #FFFFFF;
+    background: #FFFFFF;
+}
+
+
+#tab_1:checked ~ #txt_1,
+#tab_2:checked ~ #txt_2,
+#tab_3:checked ~ #txt_3,
+#tab_4:checked ~ #txt_4
+{ display: block; }
