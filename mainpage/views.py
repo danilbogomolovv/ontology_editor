@@ -24,9 +24,7 @@ def index(request):
 		o1 = Ontology(ontology_name = 'o1')
 		o1.save()
 		o1.concepts.add(c1)
-		o2 = Ontology(ontology_name = 'o2')
-		o2.save()
-
+		
 	context ={
 	}
 

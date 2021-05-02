@@ -2,32 +2,32 @@ from django import forms
 from .models import *
 
 class AddConceptForm(forms.Form):
-	new_concept_name = forms.CharField(max_length = 30, label='класс', required=False)
+	new_concept_name = forms.CharField(max_length = 30, label='Concept', required=False)
 
 class SaveForm(forms.Form):
-	file_name = forms.CharField(max_length = 30, label='Имя файла', required=False)
+	file_name = forms.CharField(max_length = 30, label='File name', required=False)
 
 class OpenForm(forms.Form):
-	file = forms.FileField( label='Имя файла', required=False)
+	file = forms.FileField( label='File name', required=False)
 
 
 class addConceptIndividualAttrForm(forms.Form):
-	new_attribute_name = forms.CharField(max_length = 30, label='имя атрибута', required=False)
-	new_attribute_value = forms.CharField(max_length = 30, label='значение атрибута', required=False)
+	new_attribute_name = forms.CharField(max_length = 30, label='Attribute name', required=False)
+	new_attribute_value = forms.CharField(max_length = 30, label='Attribute value', required=False)
 	concept_for_attribute_name = forms.CharField(max_length = 30, label='класс атрибута', required=False, widget = forms.HiddenInput())
 	individual_for_attribute_name = forms.CharField(max_length = 30, label='экземпляр атрибута', required=False, widget = forms.HiddenInput())
 
 class addSubConceptIndividualAttrForm(forms.Form):
-	new_attr_name = forms.CharField(max_length = 30, label='имя атрибута', required=False)
-	new_attr_value = forms.CharField(max_length = 30, label='значение атрибута', required=False)
+	new_attr_name = forms.CharField(max_length = 30, label='Attribute name', required=False)
+	new_attr_value = forms.CharField(max_length = 30, label='Attribute value', required=False)
 	subconc_for_attribute_name = forms.CharField(max_length = 30, label='подкласс атрибута', required=False, widget = forms.HiddenInput())
 	conc_for_attribute_name = forms.CharField(max_length = 30, label='класс атрибута', required=False, widget = forms.HiddenInput())
 	individ_for_attribute_name = forms.CharField(max_length = 30, label='экземпляр атрибута', required=False, widget = forms.HiddenInput())
 
 
 class addSubSubConceptIndividualAttrForm(forms.Form):
-	new_attrn = forms.CharField(max_length = 30, label='имя атрибута', required=False)
-	new_attrv = forms.CharField(max_length = 30, label='значение атрибута', required=False)
+	new_attrn = forms.CharField(max_length = 30, label='Attribute name', required=False)
+	new_attrv = forms.CharField(max_length = 30, label='Attribute value', required=False)
 	subcon_for_attribute_name = forms.CharField(max_length = 30, label='подкласс атрибута', required=False, widget = forms.HiddenInput())
 	subsubcon_for_attribute_name = forms.CharField(max_length = 30, label='подподкласс атрибута', required=False, widget = forms.HiddenInput())
 	con_for_attribute_name = forms.CharField(max_length = 30, label='класс атрибута', required=False, widget = forms.HiddenInput())
@@ -66,20 +66,20 @@ class DeleteSubSubConceptForm(forms.Form):
 
 class AddIndividualOrSubForm(forms.Form):
 	concept_individual_name = forms.CharField(max_length = 30, label='класс', required=False, widget = forms.HiddenInput())
-	new_individual_name = forms.CharField(max_length = 30, label='Экземпляр', required=False)
-	new_sub_concept_name = forms.CharField(max_length = 30, label='Подкласс', required=False)
+	new_individual_name = forms.CharField(max_length = 30, label='Individual', required=False)
+	new_sub_concept_name = forms.CharField(max_length = 30, label='SubConcept', required=False)
 
 class AddIndividualOrSubSubForm(forms.Form):
 	concept_name_for_sub = forms.CharField(max_length = 30, label='класс', required=False, widget = forms.HiddenInput())
 	sub_concept_individual_name = forms.CharField(max_length = 30, label='класс', required=False, widget = forms.HiddenInput())
-	new_sub_individual_name = forms.CharField(max_length = 30, label='Экземпляр', required=False)
-	new_sub_sub_concept_name = forms.CharField(max_length = 30, label='Подкласс', required=False)
+	new_sub_individual_name = forms.CharField(max_length = 30, label='Individual', required=False)
+	new_sub_sub_concept_name = forms.CharField(max_length = 30, label='SubConcept', required=False)
 
 class AddIndividualForSubSubForm(forms.Form):
 	concept_name_for_sub_add = forms.CharField(max_length = 30, label='класс', required=False, widget = forms.HiddenInput())
 	sub_concept_individual_name_add = forms.CharField(max_length = 30, label='подкласс', required=False, widget = forms.HiddenInput())
 	sub_sub_concept_individual_name_add = forms.CharField(max_length = 30, label='подподкласс', required=False, widget = forms.HiddenInput())
-	individual_name_for_sub_sub = forms.CharField(max_length = 30, label='Экземпляр', required=False)
+	individual_name_for_sub_sub = forms.CharField(max_length = 30, label='Individual', required=False)
 
 
 class CreateOntologyForm(forms.Form):
@@ -151,15 +151,15 @@ class QueryForm(forms.Form):
 								attribute_choices.append((attr_name.attribute_name, attr_name.attribute_name))
 
 		print(concept_choices) 
-		self.fields['concepts'] =forms.ChoiceField(choices=concept_choices, label='Экземпляр Класса')  
-		self.fields['attributes1'] =forms.ChoiceField(choices=attribute_choices, label='Атрибут 1') 
-		self.fields['attributes2'] =forms.ChoiceField(choices=attribute_choices, label='Атрибут 2', required=False) 
-		self.fields['attributes3'] =forms.ChoiceField(choices=attribute_choices, label='Атрибут 3', required=False)  
+		self.fields['concepts'] =forms.ChoiceField(choices=concept_choices, label='Individual of concept')  
+		self.fields['attributes1'] =forms.ChoiceField(choices=attribute_choices, label='Attribute 1') 
+		self.fields['attributes2'] =forms.ChoiceField(choices=attribute_choices, label='Attribute 2', required=False) 
+		self.fields['attributes3'] =forms.ChoiceField(choices=attribute_choices, label='Attribute 3', required=False)  
                                                       
 	concepts = forms.ChoiceField()
 	attributes1 = forms.ChoiceField()
-	attrv1 = forms.CharField(max_length = 20, label='Значение атрибута 1')
+	attrv1 = forms.CharField(max_length = 20, label='Attribute value 1')
 	attributes2 = forms.ChoiceField()
-	attrv2 = forms.CharField(max_length = 20, label='Значение атрибута 2', required=False)
+	attrv2 = forms.CharField(max_length = 20, label='Attribute value 2', required=False)
 	attributes3 = forms.ChoiceField()
-	attrv3 = forms.CharField(max_length = 20, label='Значение атрибута 3', required=False)
+	attrv3 = forms.CharField(max_length = 20, label='Attribute value 3', required=False)

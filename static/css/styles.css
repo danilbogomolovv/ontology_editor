@@ -1,24 +1,107 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+body{
+  font-family: 'Poppins';
+  margin: 0;
+  background: linear-gradient(to top, #000000, #434343);
+  background-size: 100% 100%;
+  background-attachment: fixed; 
+}
+
+.btn_cancel{ 
+ color: black;
+ font-weight: 700;
+ text-decoration: none;
+ user-select: none;
+ padding: 5px 5px;
+ outline: none;
+ border: 2px solid;
+ border-radius: 1px;
+ transition: 0.2s;
+ background-color: red;
+ border-radius: 8px;
+} 
+
+.btn_cancel :hover { 
+ background: rgba(255,255,255,.2); 
+}
+
+
+input[type=submit] {
+  color: black;
+  font-weight: 700;
+  text-decoration: none;
+  user-select: none;
+  outline: none;
+  padding: 5px 5px;
+  border: 2px solid;
+  border-radius: 1px;
+  transition: 0.2s;
+  border-radius: 8px;
+}
+
+input[type=submit] :hover { 
+ background: rgba(255,255,255,.2); 
+}
+
+.del_button {
+  color: black;
+  font-weight: 500;
+  text-decoration: none;
+  user-select: none;
+  outline: none;
+  padding: 4px 4px;
+  border: 1px solid;
+  border-radius: 1px;
+  transition: 0.2s;
+  background-color: red;
+  border-radius: 5px;
+}
+
+.del_button :hover { 
+ background: rgba(255,255,255,.2); 
+}
+
+.open-button {
+  color: black;
+  font-weight: 500;
+  text-decoration: none;
+  user-select: none;
+  outline: none;
+  padding: 4px 4px;
+  border: 1px solid;
+  border-radius: 1px;
+  transition: 0.2s;
+  border-radius: 5px;
+}
+
+.open-button :hover { 
+ background: rgba(255,255,255,.2); 
+}
+
+.form-popup {
+  display: none;
+  position: fixed;
+  background: white;
+  border: 2px solid #ccc;
+  bottom: 450px;
+  right: 450px;
+  z-index:2;
+  border-radius: 5px;
+}
 
 .relation {
 	border: 2px solid #ccc;
-}
-
- .form-popup {
-    display: none;
-    position: fixed;
-    border: 2px solid #ccc;
-    bottom: 100px;
-    right: 600px;
-}
-
-.form-container .cancel {
-    background-color: red;
+  padding: 10px;
 }
 
 
 
 .new_ontology{
 	float: right;
+}
+
+.errorlist{
+  display: none;
 }
 
 .treeHTML {
@@ -62,6 +145,7 @@
     padding: 12px;
     border: 1px solid #C0C0C0;
     background: #FFFFFF;
+    z-index:1;
 }
 .tabs>label {
     display: inline-block;
@@ -79,7 +163,6 @@
     border-bottom: 1px solid #FFFFFF;
     background: #FFFFFF;
 }
-
 
 #tab_1:checked ~ #txt_1,
 #tab_2:checked ~ #txt_2,

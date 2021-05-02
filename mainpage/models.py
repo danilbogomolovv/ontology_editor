@@ -1,7 +1,5 @@
 from django.db import models
 
-# Create your models here.
-
 class Attribute(models.Model):
 	attribute_name = models.CharField(max_length = 30)
 	attribute_value = models.CharField(max_length = 30, default = '0')
