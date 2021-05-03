@@ -13,6 +13,7 @@
 	<div class="form-popup" id="add_concept_Form">   
 		    <form method=POST action="" class="form-container">
 		    	{% csrf_token %}
+		    		<p id="lb_add_concept"></p>
 			        {{ add_concept_form.as_p }} 
 			        <input type="submit" value="Add Concept">
 			        <button type="button" class="btn_cancel" onclick="closeConceptForm()">Close</button>
@@ -110,6 +111,7 @@
 	<div class="form-popup" id="add_individual_or_sub_Form">
 		    <form method=POST action="" class="form-container">
 		    	{% csrf_token %}
+		    		<p id="lb_add_ind_or_sub"></p>
 			        {{ add_individual_or_sub_form.as_p }}
 			        <input type="submit" value="Add">
 			        <button type="button" class="btn_cancel" onclick="closeIndividualOrSubForm()">Close</button>
@@ -119,6 +121,7 @@
 	<div class="form-popup" id="add_individual_or_sub_sub_Form">
 		    <form method=POST action="" class="form-container">
 		    	{% csrf_token %}
+		    		<p id="lb_add_ind_or_sub_sub"></p>
 			        {{ add_individual_or_sub_sub_form.as_p }}
 			        <input type="submit" value="Add">
 			        <button type="button" class="btn_cancel" onclick="closeIndividualOrSubSubForm()">Close</button>
@@ -128,6 +131,7 @@
 	<div class="form-popup" id="add_individual_for_sub_sub_Form">
 		    <form method=POST action="" class="form-container">
 		    	{% csrf_token %}
+		    		<p id="lb_add_ind_for_sub_sub"></p>
 			        {{ add_individual_for_sub_sub_form.as_p }}
 			        <input type="submit" value="Add">
 			        <button type="button" class="btn_cancel" onclick="closeIndividualForSubSubForm()">Close</button>
@@ -137,6 +141,7 @@
 	<div class="form-popup" id="add_atr_con_Form">
 		    <form method=POST action="" class="form-container">
 		    	{% csrf_token %}
+		    		<p id="lb_add_attr_for_con"></p>
 			        {{ add_attribute_con_form.as_p }}
 			        <input type="submit" value="Add">
 			        <button type="button" class="btn_cancel" onclick="closeAddConceptIndividualAttr()">Close</button>
@@ -146,6 +151,7 @@
 	<div class="form-popup" id="add_atr_subcon_Form">
 		    <form method=POST action="" class="form-container">
 		    	{% csrf_token %}
+		    		<p id="lb_add_attr_for_subcon"></p>
 			        {{ add_attribute_subcon_form.as_p }}
 			        <input type="submit" value="Add">
 			        <button type="button" class="btn_cancel" onclick="closeAddSubConceptIndividualAttr()">Close</button>
@@ -155,6 +161,7 @@
 	<div class="form-popup" id="add_atr_subsubcon_Form">
 		    <form method=POST action="" class="form-container">
 		    	{% csrf_token %}
+		    		<p id="lb_add_attr_for_subsubcon"></p>
 			        {{ add_attribute_subsubcon_form.as_p }}
 			        <input type="submit" value="Add">
 			        <button type="button" class="btn_cancel" onclick="closeAddSubSubConceptIndividualAttr()">Close</button>
@@ -196,7 +203,7 @@
 		<div class="ontology">
 			<button class="open-button" onclick="openSaveForm()">Save</button>
 			<button class="open-button" onclick="openOpenForm()">Open</button>
-	            <div class="treeHTML">Ontology : {{work_ontology.ontology_name}} <button class="open-button" onclick="openConceptForm()">+</button> <button type="submit" class ="del_button" onclick="deleteOntology('{{work_ontology.ontology_name}}')">del</button>
+	            <div class="treeHTML">Ontology : {{work_ontology.ontology_name}} <button class="open-button" onclick="openConceptForm('{{work_ontology.ontology_name}}')">+</button> <button type="submit" class ="del_button" onclick="deleteOntology('{{work_ontology.ontology_name}}')">del</button>
 
 		            {% for concept in work_ontology.concepts.all %}
 		            		<div>Concept : {{concept.concept_name}} <button type="submit" 
@@ -500,6 +507,7 @@ function addConceptIndividualAttr(concept_name, ind_name) {
 	document.getElementById("add_atr_con_Form").style.display = "block";
     document.getElementById("id_concept_for_attribute_name").value = concept_name;
     document.getElementById("id_individual_for_attribute_name").value = ind_name;  
+    document.getElementById("lb_add_attr_for_con").textContent = "Add to " + ind_name; 
 }
 
 function closeAddConceptIndividualAttr() {
@@ -512,7 +520,8 @@ function addSubConceptIndividualAttr(sub_concept_name, concept_name, ind_name) {
 	document.getElementById("add_atr_subcon_Form").style.display = "block";
     document.getElementById("id_conc_for_attribute_name").value = concept_name;
     document.getElementById("id_individ_for_attribute_name").value = ind_name;
-    document.getElementById("id_subconc_for_attribute_name").value = sub_concept_name;   
+    document.getElementById("id_subconc_for_attribute_name").value = sub_concept_name;
+    document.getElementById("lb_add_attr_for_subcon").textContent = "Add to " + ind_name;    
 }
 
 function closeAddSubConceptIndividualAttr() {
@@ -528,6 +537,7 @@ function addSubSubConceptIndividualAttr(sub_sub_concept_name, sub_concept_name, 
     document.getElementById("id_ind_for_attribute_name").value = ind_name;
     document.getElementById("id_subcon_for_attribute_name").value = sub_concept_name;   
     document.getElementById("id_subsubcon_for_attribute_name").value = sub_sub_concept_name;  
+    document.getElementById("lb_add_attr_for_subsubcon").textContent = "Add to " + ind_name; 
 }
 
 function closeAddSubSubConceptIndividualAttr() {
@@ -593,8 +603,10 @@ function closeDelSubSubConceptForm() {
     document.getElementById("id_del_sub_sub_concept_name").value = '';
 }
 
-function openConceptForm() {
-    document.getElementById("add_concept_Form").style.display = "block"; }
+function openConceptForm(ontology_name) {
+    document.getElementById("add_concept_Form").style.display = "block";
+    document.getElementById("lb_add_concept").textContent = "Add to " + ontology_name;
+}
 
 function closeConceptForm() {
     document.getElementById("add_concept_Form").style.display = "none";
@@ -603,6 +615,7 @@ function closeConceptForm() {
 function openIndividualOrSubForm(concept_name_for) {
     document.getElementById("add_individual_or_sub_Form").style.display = "block";
     document.getElementById("id_concept_individual_name").value = concept_name_for;
+    document.getElementById("lb_add_ind_or_sub").textContent = "Add to " + concept_name_for;
      }
 
 function closeIndividualOrSubForm() {
@@ -613,6 +626,7 @@ function openIndividualOrSubSubForm(sub_concept_name_for, concept_name_for) {
     document.getElementById("add_individual_or_sub_sub_Form").style.display = "block";
     document.getElementById("id_concept_name_for_sub").value = concept_name_for;
     document.getElementById("id_sub_concept_individual_name").value = sub_concept_name_for;
+    document.getElementById("lb_add_ind_or_sub_sub").textContent = "Add to " + sub_concept_name_for;
      }
 
 function closeIndividualOrSubSubForm() {
@@ -624,6 +638,7 @@ function openIndividualForSubSubForm(sub_sub_concept_name_for, sub_concept_name_
     document.getElementById("id_concept_name_for_sub_add").value = concept_name_for;
     document.getElementById("id_sub_concept_individual_name_add").value = sub_concept_name_for;
     document.getElementById("id_sub_sub_concept_individual_name_add").value = sub_sub_concept_name_for;
+    document.getElementById("lb_add_ind_for_sub_sub").textContent = "Add to " + sub_sub_concept_name_for;
      }
 
 function closeIndividualForSubSubForm() {
