@@ -26,7 +26,7 @@ class Concept(models.Model):
 class Ontology(models.Model):
 	ontology_name = models.CharField(max_length = 30, default = 'test_ontology')
 	concepts = models.ManyToManyField(Concept)	
-	comment = models.CharField(max_length = 1200, default = 'lb')
+	comment = models.CharField(max_length = 1200, default = '')
 
 	def save(self, *args, **kwargs):
 		ontology_exist = True

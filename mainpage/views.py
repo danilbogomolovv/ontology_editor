@@ -6,25 +6,6 @@ history_of_work_ontology = []
 
 def index(request):
 
-	if len(Ontology.objects.all()) == 0:
-		a1 = Attribute(attribute_name = 'a1')
-		a1.save()
-		a2 = Attribute(attribute_name = 'a2')
-		a2.save()
-		a3 = Attribute(attribute_name = 'a3')
-		a3.save()
-		a4 = Attribute(attribute_name = 'a4')
-		a4.save()
-		i1 = Individual(individual_name = 'i1')
-		i1.save()
-		i1.attributes.add(a1, a2, a3)
-		c1 = Concept(concept_name = 'c1')
-		c1.save()
-		c1.individuals.add(i1)
-		o1 = Ontology(ontology_name = 'o1')
-		o1.save()
-		o1.concepts.add(c1)
-
 	context ={
 	}
 
@@ -676,38 +657,27 @@ def index(request):
 					ind_for_attribute.save()
 
 	if request.method == 'POST':
-		query_Form = QueryForm(request.POST, ontology = history_of_work_ontology[-1])
-		context['query_Form'] = query_Form
-		query_result = []
-		query_result1 = []
-		query_result2 = []
-		query_result3 = []
-		check2 = False
-		check3 = False
-		if query_Form.is_valid():
-			con_query_name = query_Form.cleaned_data['concepts']
-			attrn_query1 = query_Form.cleaned_data['attributes1']
-			attrv_query1 = query_Form.cleaned_data['attrv1']
-			attrn_query2 = query_Form.cleaned_data['attributes2']
-			attrv_query2 = query_Form.cleaned_data['attrv2']
-			attrn_query3 = query_Form.cleaned_data['attributes3']
-			attrv_query3 = query_Form.cleaned_data['attrv3']
+		if len(history_of_work_ontology) > 0:
+			query_Form = QueryForm(request.POST, ontology = history_of_work_ontology[-1])
+			context['query_Form'] = query_Form
+			query_result = []
+			query_result1 = []
+			query_result2 = []
+			query_result3 = []
+			check2 = False
+			check3 = False
+			if query_Form.is_valid():
+				con_query_name = query_Form.cleaned_data['concepts']
+				attrn_query1 = query_Form.cleaned_data['attributes1']
+				attrv_query1 = query_Form.cleaned_data['attrv1']
+				attrn_query2 = query_Form.cleaned_data['attributes2']
+				attrv_query2 = query_Form.cleaned_data['attrv2']
+				attrn_query3 = query_Form.cleaned_data['attributes3']
+				attrv_query3 = query_Form.cleaned_data['attrv3']
 
-			for i in history_of_work_ontology[-1].concepts.all():
-				if con_query_name == i.concept_name:
-					con_query = i
-					for j in con_query.individuals.all():
-						for atr in j.attributes.all():
-							if attrn_query1 == atr.attribute_name and attrv_query1 == atr.attribute_value:
-								query_result1.append(j.individual_name)
-							if attrn_query2 == atr.attribute_name and attrv_query2 == atr.attribute_value:
-								query_result2.append(j.individual_name)
-							if attrn_query3 == atr.attribute_name and attrv_query3 == atr.attribute_value:
-								query_result3.append(j.individual_name)
-
-				for sub_con in i.sub_concepts.all():
-					if con_query_name == sub_con.sub_concept_name:
-						con_query = sub_con
+				for i in history_of_work_ontology[-1].concepts.all():
+					if con_query_name == i.concept_name:
+						con_query = i
 						for j in con_query.individuals.all():
 							for atr in j.attributes.all():
 								if attrn_query1 == atr.attribute_name and attrv_query1 == atr.attribute_value:
@@ -717,9 +687,9 @@ def index(request):
 								if attrn_query3 == atr.attribute_name and attrv_query3 == atr.attribute_value:
 									query_result3.append(j.individual_name)
 
-					for sub_con1 in sub_con.sub_concepts1.all():
-						if con_query_name == sub_con1.sub_concept_name:
-							con_query = sub_con1
+					for sub_con in i.sub_concepts.all():
+						if con_query_name == sub_con.sub_concept_name:
+							con_query = sub_con
 							for j in con_query.individuals.all():
 								for atr in j.attributes.all():
 									if attrn_query1 == atr.attribute_name and attrv_query1 == atr.attribute_value:
@@ -727,34 +697,48 @@ def index(request):
 									if attrn_query2 == atr.attribute_name and attrv_query2 == atr.attribute_value:
 										query_result2.append(j.individual_name)
 									if attrn_query3 == atr.attribute_name and attrv_query3 == atr.attribute_value:
-										query_result3.append(j.individual_name)		
+										query_result3.append(j.individual_name)
 
-			if attrv_query2 != '' and attrv_query3 == '':
-				for i in query_result1:
-					for j in query_result2:
-						if i == j:
-							query_result.append(j)
-				context['query_result'] = query_result
+						for sub_con1 in sub_con.sub_concepts1.all():
+							if con_query_name == sub_con1.sub_concept_name:
+								con_query = sub_con1
+								for j in con_query.individuals.all():
+									for atr in j.attributes.all():
+										if attrn_query1 == atr.attribute_name and attrv_query1 == atr.attribute_value:
+											query_result1.append(j.individual_name)
+										if attrn_query2 == atr.attribute_name and attrv_query2 == atr.attribute_value:
+											query_result2.append(j.individual_name)
+										if attrn_query3 == atr.attribute_name and attrv_query3 == atr.attribute_value:
+											query_result3.append(j.individual_name)		
 
-			if attrv_query3 != '' and attrv_query2 == '':
-				for i in query_result1:
-					for j in query_result3:
-						if i == j:
-							query_result.append(j)
-				context['query_result'] = query_result
-
-			if attrv_query3 != '' and attrv_query2 != '':
-				for i in query_result1:
-					for j in query_result3:
-						for k in query_result2:
-							if i == j and i == k and j == k:
+				if attrv_query2 != '' and attrv_query3 == '':
+					for i in query_result1:
+						for j in query_result2:
+							if i == j:
 								query_result.append(j)
-				context['query_result'] = query_result
+					context['query_result'] = query_result
 
-			if attrv_query3 == '' and attrv_query2 == '':
-				for i in query_result1:
-					query_result.append(i)
-				context['query_result'] = query_result
+				if attrv_query3 != '' and attrv_query2 == '':
+					for i in query_result1:
+						for j in query_result3:
+							if i == j:
+								query_result.append(j)
+					context['query_result'] = query_result
 
+				if attrv_query3 != '' and attrv_query2 != '':
+					for i in query_result1:
+						for j in query_result3:
+							for k in query_result2:
+								if i == j and i == k and j == k:
+									query_result.append(j)
+					context['query_result'] = query_result
 
-	return render(request, 'mainpage/index.html', context)
+				if attrv_query3 == '' and attrv_query2 == '':
+					for i in query_result1:
+						query_result.append(i)
+					context['query_result'] = query_result
+
+	if len(Ontology.objects.all()) == 0:
+		return render(request, 'mainpage/initpage.html', context)
+	else:
+		return render(request, 'mainpage/index.html', context)
