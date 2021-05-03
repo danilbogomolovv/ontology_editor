@@ -164,23 +164,34 @@ body{
   transform: translateX(0);
 }
 
-
 .btn_cancel{ 
-  color: black;
-  font-weight: 700;
+  display: inline-flex;
+  margin: 1px;
   text-decoration: none;
-  user-select: none;
+  position: relative;
+  font-size: 13px;
+  line-height: 5px;
   padding: 5px 5px;
-  outline: none;
-  border: 2px solid;
-  border-radius: 1px;
-  transition: 0.2s;
-  background-color: red;
-  border-radius: 8px;
+  color: black;
+  font-weight: bold;
+  background: red;
+  text-transform: uppercase;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  border: 2px solid #BFE2FF;
+  overflow: hidden;
 } 
 
-.btn_cancel :hover { 
-  background: rgba(255,255,255,.2); 
+.btn_cancel:hover,
+.btn_cancel:active,
+.btn_cancel:focus {
+  color: white;
+}
+
+.btn_cancel:hover:before,
+.btn_cancel:active:before,
+.btn_cancel:focus:before {
+  transform: translateX(0);
 }
 
 
@@ -206,7 +217,7 @@ input[type=submit] :hover {
   position: fixed;
   background: white;
   border: 2px solid #ccc;
-  bottom: 450px;
+  bottom: 400px;
   right: 450px;
   z-index:2;
   border-radius: 5px;

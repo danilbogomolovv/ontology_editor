@@ -213,7 +213,7 @@ def index(request):
 				f = open(str(request.FILES.get("file")), 'r')
 				fr = f.readlines()
 				exist_ontology_check = True
-				create_ontology_chek = True
+				create_ontology_check = False
 				for fstr in fr:
 
 					if fstr.startswith('Онтология'):
@@ -226,17 +226,14 @@ def index(request):
 								exist_ontology_check = False
 
 					if exist_ontology_check:
-						if create_ontology_chek:
-							comment_file = ''
-							if fstr.startswith('Комментарий'):
-								comment_file = fstr.replace('Комментарий :', '')
-								comment_file = ontology_name_file.replace('\n', '')
+
+						if fstr.startswith('Комментарий :'):
+							comment_file = fstr.replace('Комментарий :', '')
+							comment_file = ontology_name_file.replace('\n', '')
 							ont = Ontology(ontology_name = ontology_name_file, comment = comment_file)
 							ont.save()
-							create_ontology_chek = False
-
-
-
+							create_ontology_check = True
+		
 						if fstr.startswith('--Класс'):
 							concept_name_file = fstr.replace('--Класс :', '')
 							concept_name_file = concept_name_file.replace('\n', '')
@@ -415,9 +412,9 @@ def index(request):
 															attr.save()
 															t.attributes.add(attr)
 															attr.save()
-
-						history_of_work_ontology.append(ont)
-						context['work_ontology'] = history_of_work_ontology[-1]
+						if create_ontology_check:
+							history_of_work_ontology.append(ont)
+							context['work_ontology'] = history_of_work_ontology[-1]
 
 
 	if request.method == 'POST':
