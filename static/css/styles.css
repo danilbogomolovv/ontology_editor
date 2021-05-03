@@ -7,6 +7,20 @@ body{
   background-attachment: fixed; 
 }
 
+.left_field{
+  position: relative;
+  float: left;
+  border: 2px solid;  
+}
+
+.right_field{
+  position: absolute;
+  float: right;
+  border: 2px solid; 
+  background-color: red;
+  border-radius: 5px; 
+}
+
 .btn_cancel{ 
  color: black;
  font-weight: 700;

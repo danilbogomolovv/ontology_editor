@@ -20,6 +20,15 @@
 		    </form>
 	</div>
 
+	<div class="form-popup" id="comment_Form">   
+		    <form method=POST action="" class="form-container">
+		    	{% csrf_token %}
+			        {{ comment_form.as_p }} 
+			        <input type="submit" value="Add comment">
+			        <button type="button" class="btn_cancel" onclick="closeCommentForm()">Close</button>
+		    </form>
+	</div>
+
 	<div class="form-popup" id="save_Form">   
 		    <form method=POST action="" class="form-container">
 		    	{% csrf_token %}
@@ -173,10 +182,9 @@
 
 		<form method=POST action="">
     	{% csrf_token %}
-        {{ choice_ontology_form }}
+        	{{ choice_ontology_form }}
         <input type="submit" value="Choise ontology">
     </form>
-
    
 	    <form method=POST action="">
 	    	{% csrf_token %}
@@ -199,10 +207,11 @@
     <label for="tab_4">Relations</label>
 
     <div id="txt_1">
-
+     <div class="left_field">
 		<div class="ontology">
 			<button class="open-button" onclick="openSaveForm()">Save</button>
 			<button class="open-button" onclick="openOpenForm()">Open</button>
+			<button class="open-button" onclick="openCommentForm()">Add Comment</button>
 	            <div class="treeHTML">Ontology : {{work_ontology.ontology_name}} <button class="open-button" onclick="openConceptForm('{{work_ontology.ontology_name}}')">+</button> <button type="submit" class ="del_button" onclick="deleteOntology('{{work_ontology.ontology_name}}')">del</button>
 
 		            {% for concept in work_ontology.concepts.all %}
@@ -311,7 +320,12 @@
 		            {% endfor %}
 		        </div>
 		</div>
-    </div>
+     </div>
+     <div class="right_filed">
+     	<p>{{ text }}</p>
+	</div>
+	</div>
+
 
     <div id="txt_2">
 
@@ -664,6 +678,15 @@ function openOpenForm() {
 
 function closeOpenForm() {
     document.getElementById("open_Form").style.display = "none";
+    
+}
+
+function openCommentForm() {
+    document.getElementById("comment_Form").style.display = "block";
+     }
+
+function closeCommentForm() {
+    document.getElementById("comment_Form").style.display = "none";
     
 }
 

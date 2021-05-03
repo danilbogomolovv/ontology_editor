@@ -24,7 +24,7 @@ def index(request):
 		o1 = Ontology(ontology_name = 'o1')
 		o1.save()
 		o1.concepts.add(c1)
-		
+
 	context ={
 	}
 
@@ -51,6 +51,15 @@ def index(request):
 		if len(history_of_work_ontology) > 0:
 			context['work_ontology'] = history_of_work_ontology[-1]
 			print(history_of_work_ontology)
+
+	if request.method == 'POST':
+		comment_form = CommentForm(request.POST)
+		context['comment_form'] = comment_form
+		if comment_form.is_valid():
+			text = comment_form.cleaned_data['text']
+			context['text'] = text
+			history_of_work_ontology[-1].comment = text
+			history_of_work_ontology[-1].save()
 
 
 	if request.method == 'POST':
