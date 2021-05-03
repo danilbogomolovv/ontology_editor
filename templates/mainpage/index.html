@@ -209,9 +209,9 @@
     <div id="txt_1">
      <div class="left_field">
 		<div class="ontology">
-			<button class="open-button" onclick="openSaveForm()">Save</button>
-			<button class="open-button" onclick="openOpenForm()">Open</button>
-			<button class="open-button" onclick="openCommentForm()">Add Comment</button>
+			<button class="openSOC-button" onclick="openSaveForm()">Save</button>
+			<button class="openSOC-button" onclick="openOpenForm()">Open</button>
+			<button class="openSOC-button" onclick="openCommentForm()">Add Comment</button>
 	            <div class="treeHTML">Ontology : {{work_ontology.ontology_name}} <button class="open-button" onclick="openConceptForm('{{work_ontology.ontology_name}}')">+</button> <button type="submit" class ="del_button" onclick="deleteOntology('{{work_ontology.ontology_name}}')">del</button>
 
 		            {% for concept in work_ontology.concepts.all %}
@@ -321,11 +321,10 @@
 		        </div>
 		</div>
      </div>
-     <div class="right_filed">
-     	<p>{{ text }}</p>
+		    <div class="right_filed">
+		     	<p>{{ text }}</p>
+			</div>
 	</div>
-	</div>
-
 
     <div id="txt_2">
 

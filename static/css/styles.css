@@ -7,36 +7,67 @@ body{
   background-attachment: fixed; 
 }
 
-.left_field{
+.openSOC-button {
+  display: inline-flex;
+  margin: 1px;
+  text-decoration: none;
   position: relative;
-  float: left;
-  border: 2px solid;  
+  font-size: 13px;
+  line-height: 5px;
+  padding: 10px 20px;
+  color: black;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: 'Poppins', sans-serif;
+  background: white;
+  cursor: pointer;
+  border: 2px solid #BFE2FF;
+  overflow: hidden;
+  z-index: 1;
+}
+.openSOC-button:hover,
+.openSOC-button:active,
+.openSOC-button:focus {
+  color: white;
+}
+.openSOC-button:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -50px;
+  bottom: 0;
+  left: 0;
+  border-right: 50px solid transparent;
+  border-top: 50px solid #2D6B9F;
+  transition: transform 0.5s;
+  transform: translateX(-100%);
+  z-index: -1;
+}
+.openSOC-button:hover:before,
+.openSOC-button:active:before,
+.openSOC-button:focus:before {
+  transform: translateX(0);
 }
 
-.right_field{
-  position: absolute;
-  float: right;
-  border: 2px solid; 
-  background-color: red;
-  border-radius: 5px; 
-}
+
+
 
 .btn_cancel{ 
- color: black;
- font-weight: 700;
- text-decoration: none;
- user-select: none;
- padding: 5px 5px;
- outline: none;
- border: 2px solid;
- border-radius: 1px;
- transition: 0.2s;
- background-color: red;
- border-radius: 8px;
+  color: black;
+  font-weight: 700;
+  text-decoration: none;
+  user-select: none;
+  padding: 5px 5px;
+  outline: none;
+  border: 2px solid;
+  border-radius: 1px;
+  transition: 0.2s;
+  background-color: red;
+  border-radius: 8px;
 } 
 
 .btn_cancel :hover { 
- background: rgba(255,255,255,.2); 
+  background: rgba(255,255,255,.2); 
 }
 
 
@@ -54,7 +85,7 @@ input[type=submit] {
 }
 
 input[type=submit] :hover { 
- background: rgba(255,255,255,.2); 
+  background: rgba(255,255,255,.2); 
 }
 
 .del_button {
@@ -89,7 +120,7 @@ input[type=submit] :hover {
 }
 
 .open-button :hover { 
- background: rgba(255,255,255,.2); 
+  background: rgba(255,255,255,.2); 
 }
 
 .form-popup {
