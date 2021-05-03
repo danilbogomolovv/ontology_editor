@@ -11,10 +11,7 @@ class OpenForm(forms.Form):
 	file = forms.FileField( label='File name', required=False)
 
 class CommentForm(forms.Form):
-	text = forms.CharField(max_length = 1200, label='', required=False, widget=forms.Textarea(
-		attrs={'class':'text_input',
-		'placeholder':"Your text here",
-				}))
+	text = forms.CharField(max_length = 1200, label='', required=False, widget=forms.Textarea())
 
 class addConceptIndividualAttrForm(forms.Form):
 	new_attribute_name = forms.CharField(max_length = 30, label='Attribute name', required=False)

@@ -57,10 +57,9 @@ def index(request):
 		context['comment_form'] = comment_form
 		if comment_form.is_valid():
 			text = comment_form.cleaned_data['text']
-			context['text'] = text
-			history_of_work_ontology[-1].comment = text
-			history_of_work_ontology[-1].save()
-
+			if text != '':
+				history_of_work_ontology[-1].comment = text
+				history_of_work_ontology[-1].save()
 
 	if request.method == 'POST':
 		if len(history_of_work_ontology) > 0:
@@ -192,8 +191,9 @@ def index(request):
 			if save_form.is_valid():
 				file_name = save_form.cleaned_data.get('file_name')
 				if file_name != '':
-					f1 = open(file_name + ".rdf", 'w')
+					f1 = open(file_name + ".rdf", 'w')					
 					f1.write('Онтология :' + history_of_work_ontology[-1].ontology_name + '\n')
+					f1.write('Комментарий :' + history_of_work_ontology[-1].comment + '\n')
 					for concept in history_of_work_ontology[-1].concepts.all():
 						f1.write('--Класс :' + concept.concept_name + '\n')
 						if len(concept.individuals.all()):
@@ -234,6 +234,7 @@ def index(request):
 				exist_ontology_check = True
 				create_ontology_chek = True
 				for fstr in fr:
+
 					if fstr.startswith('Онтология'):
 						ontology_name_file = fstr.replace('Онтология :', '')
 						ontology_name_file = ontology_name_file.replace('\n', '')
@@ -245,9 +246,15 @@ def index(request):
 
 					if exist_ontology_check:
 						if create_ontology_chek:
-							ont = Ontology(ontology_name = ontology_name_file)
+							comment_file = ''
+							if fstr.startswith('Комментарий'):
+								comment_file = fstr.replace('Комментарий :', '')
+								comment_file = ontology_name_file.replace('\n', '')
+							ont = Ontology(ontology_name = ontology_name_file, comment = comment_file)
 							ont.save()
 							create_ontology_chek = False
+
+
 
 						if fstr.startswith('--Класс'):
 							concept_name_file = fstr.replace('--Класс :', '')

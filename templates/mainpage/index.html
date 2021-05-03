@@ -183,14 +183,14 @@
 		<form method=POST action="">
     	{% csrf_token %}
         	{{ choice_ontology_form }}
-        <input type="submit" value="Choise ontology">
+        <button type="submit" class="create-choice-button">Choise ontology</button>
     </form>
    
 	    <form method=POST action="">
 	    	{% csrf_token %}
 	    	<div class="new_ontology">
 		        {{ create_ontology_form }}
-		        <input type="submit" value="Create ontology">
+		        <button type="submit" class="create-choice-button">Create ontology</button>
 	        </div>
 	    </form>
 
@@ -322,7 +322,7 @@
 		</div>
      </div>
 		    <div class="right_filed">
-		     	<p>{{ text }}</p>
+		     	<p>{{ work_ontology.comment }}</p>
 			</div>
 	</div>
 
@@ -430,7 +430,7 @@
 		    <form method=POST action="">
 		    	{% csrf_token %}
 			        {{ query_Form.as_p }}
-			        <input type="submit" value="Search!">
+			        <button type="submit" class="openSOC-button">Search!</button>
 		    </form>
 		</div>
 

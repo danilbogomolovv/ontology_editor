@@ -49,7 +49,120 @@ body{
   transform: translateX(0);
 }
 
+.create-choice-button {
+  display: inline-flex;
+  margin: 1px;
+  text-decoration: none;
+  position: relative;
+  font-size: 13px;
+  line-height: 5px;
+  padding: 5px 10px;
+  color: black;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: 'Poppins', sans-serif;
+  background: white;
+  cursor: pointer;
+  border: 2px solid #BFE2FF;
+  overflow: hidden;
+  z-index: 1;
+}
+.create-choice-button:hover,
+.create-choice-button:active,
+.create-choice-button:focus {
+  color: white;
+}
+.create-choice-button:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -50px;
+  bottom: 0;
+  left: 0;
+  border-right: 50px solid transparent;
+  border-top: 50px solid #2D6B9F;
+  transition: transform 0.5s;
+  transform: translateX(-100%);
+  z-index: -1;
+}
+.create-choice-button:hover:before,
+.create-choice-button:active:before,
+.create-choice-button:focus:before {
+  transform: translateX(0);
+}
 
+
+.open-button {
+  display: inline-flex;
+  margin: 1px;
+  text-decoration: none;
+  position: relative;
+  font-size: 13px;
+  line-height: 5px;
+  padding: 5px 5px;
+  color: black;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: 'Poppins', sans-serif;
+  background: white;
+  cursor: pointer;
+  border: 2px solid #BFE2FF;
+  overflow: hidden;
+  z-index: 1;
+}
+.open-button:hover,
+.open-button:active,
+.open-button:focus {
+  color: white;
+}
+.open-button:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -50px;
+  bottom: 0;
+  left: 0;
+  border-right: 50px solid transparent;
+  border-top: 50px solid #2D6B9F;
+  transition: transform 0.5s;
+  transform: translateX(-100%);
+  z-index: -1;
+}
+.open-button:hover:before,
+.open-button:active:before,
+.open-button:focus:before {
+  transform: translateX(0);
+}
+
+.del_button {
+  display: inline-flex;
+  margin: 1px;
+  text-decoration: none;
+  position: relative;
+  font-size: 13px;
+  line-height: 5px;
+  padding: 5px 5px;
+  color: black;
+  font-weight: bold;
+  background: red;
+  text-transform: uppercase;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  border: 2px solid #BFE2FF;
+  overflow: hidden;
+  z-index: 1;
+}
+.del_button:hover,
+.del_button:active,
+.del_button:focus {
+  color: white;
+}
+
+.del_button:hover:before,
+.del_button:active:before,
+.del_button:focus:before {
+  transform: translateX(0);
+}
 
 
 .btn_cancel{ 
@@ -85,41 +198,6 @@ input[type=submit] {
 }
 
 input[type=submit] :hover { 
-  background: rgba(255,255,255,.2); 
-}
-
-.del_button {
-  color: black;
-  font-weight: 500;
-  text-decoration: none;
-  user-select: none;
-  outline: none;
-  padding: 4px 4px;
-  border: 1px solid;
-  border-radius: 1px;
-  transition: 0.2s;
-  background-color: red;
-  border-radius: 5px;
-}
-
-.del_button :hover { 
- background: rgba(255,255,255,.2); 
-}
-
-.open-button {
-  color: black;
-  font-weight: 500;
-  text-decoration: none;
-  user-select: none;
-  outline: none;
-  padding: 4px 4px;
-  border: 1px solid;
-  border-radius: 1px;
-  transition: 0.2s;
-  border-radius: 5px;
-}
-
-.open-button :hover { 
   background: rgba(255,255,255,.2); 
 }
 
