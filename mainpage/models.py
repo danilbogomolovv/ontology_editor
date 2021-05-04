@@ -25,16 +25,16 @@ class Concept(models.Model):
 
 class Ontology(models.Model):
 	ontology_name = models.CharField(max_length = 30, default = 'test_ontology')
-	concepts = models.ManyToManyField(Concept)	
 	comment = models.CharField(max_length = 1200, default = '')
+	concepts = models.ManyToManyField(Concept)	
 
-	def save(self, *args, **kwargs):
-		ontology_exist = True
-		for i in Ontology.objects.all():
-			if i.ontology_name == self.ontology_name:
-				ontology_exist = False
-		if ontology_exist:
-			super().save(*args, **kwargs)
+#	def save(self, *args, **kwargs):
+#		ontology_exist = True
+#		for i in Ontology.objects.all():
+#			if i.ontology_name == self.ontology_name:
+#				ontology_exist = False
+#		if ontology_exist:
+#			super().save(*args, **kwargs)
 
 
 

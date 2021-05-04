@@ -213,7 +213,8 @@ def index(request):
 				f = open(str(request.FILES.get("file")), 'r')
 				fr = f.readlines()
 				exist_ontology_check = True
-				create_ontology_check = False
+				create_ontology_check = True
+				comment_file = ''
 				for fstr in fr:
 
 					if fstr.startswith('Онтология'):
@@ -226,14 +227,18 @@ def index(request):
 								exist_ontology_check = False
 
 					if exist_ontology_check:
-
-						if fstr.startswith('Комментарий :'):
-							comment_file = fstr.replace('Комментарий :', '')
-							comment_file = ontology_name_file.replace('\n', '')
-							ont = Ontology(ontology_name = ontology_name_file, comment = comment_file)
+						if create_ontology_check:
+							ont = Ontology(ontology_name = ontology_name_file)
 							ont.save()
-							create_ontology_check = True
-		
+							create_ontology_check = False
+
+						if fstr.startswith('Комментарий'):
+							comment_file = fstr.replace('Комментарий :', '')
+							comment_file = comment_file.replace('\n', '')
+							ont.comment = comment_file
+							ont.save()
+
+					
 						if fstr.startswith('--Класс'):
 							concept_name_file = fstr.replace('--Класс :', '')
 							concept_name_file = concept_name_file.replace('\n', '')
