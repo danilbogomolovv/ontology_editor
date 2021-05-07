@@ -4,12 +4,10 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <title>Редактор онтологий</title>
 </head>
 <body>
-
-
-
 	<div class="form-popup" id="add_concept_Form">   
 		    <form method=POST action="" class="form-container">
 		    	{% csrf_token %}
@@ -180,34 +178,33 @@
 
 <div class="tabs">
 
-		<form method=POST action="">
+	<form method=POST action="">
     	{% csrf_token %}
         	{{ choice_ontology_form }}
         <button type="submit" class="create-choice-button">Choise ontology</button>
     </form>
    
-	    <form method=POST action="">
-	    	{% csrf_token %}
-	    	<div class="new_ontology">
-		        {{ create_ontology_form }}
-		        <button type="submit" class="create-choice-button">Create ontology</button>
-	        </div>
-	    </form>
+    <form method=POST action="">
+    	{% csrf_token %}
+    	<div class="new_ontology">
+	        {{ create_ontology_form }}
+	        <button type="submit" class="create-choice-button">Create ontology</button>
+        </div>
+    </form>
 
-    <input class="tab_input" type="radio" name="inset" value="" id="tab_1" checked>
+    <input class="tab_input" type="radio" name="inset" value="" id="tab_1" onclick="location.href = '{% url 'ontology' %}';" {% if checked == 1 %} checked {% endif %}>
     <label for="tab_1">Ontology</label>
 
-    <input class="tab_input" type="radio" name="inset" value="" id="tab_2">
+    <input class="tab_input" type="radio" name="inset" value="" id="tab_2" onclick="location.href = '{% url 'attributes' %}';" {% if checked == 2 %} checked {% endif %}>
     <label for="tab_2">Attributes</label>
 
-    <input class="tab_input" type="radio" name="inset" value="" id="tab_3">
+    <input class="tab_input" type="radio" name="inset" value="" id="tab_3" onclick="location.href = '{% url 'requests' %}';" {% if checked == 3 %} checked {% endif %}>
     <label for="tab_3">Requests</label>
 
-    <input class="tab_input" type="radio" name="inset" value="" id="tab_4">
+    <input class="tab_input" type="radio" name="inset" value="" id="tab_4" onclick="location.href = '{% url 'relations' %}';" {% if checked == 4 %} checked {% endif %}>
     <label for="tab_4">Relations</label>
 
     <div id="txt_1">
-     <div class="left_field">
 		<div class="ontology">
 			<button class="openSOC-button" onclick="openSaveForm()">Save</button>
 			<button class="openSOC-button" onclick="openOpenForm()">Open</button>
@@ -318,13 +315,11 @@
 		            		</details>
 		            		</div>
 		            {% endfor %}
+		            <p>{{ work_ontology.comment }}</p>
 		        </div>
 		</div>
-     </div>
-		    <div class="right_filed">
-		     	<p>{{ work_ontology.comment }}</p>
-			</div>
 	</div>
+	
 
     <div id="txt_2">
 
@@ -482,10 +477,12 @@
     </div>
 
 </div>
+</body>
 
 </html>
 
 <script type="text/javascript">
+
 function deleteConcept(concept_name) {
 	document.getElementById("del_concept_Form").style.display = "block";
     document.getElementById("id_del_concept_name").value = concept_name; }

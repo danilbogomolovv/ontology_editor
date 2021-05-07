@@ -4,16 +4,7 @@ from .forms import *
 
 history_of_work_ontology = []
 
-def index(request):
-
-	context ={
-	}
-
-	for i in Ontology.objects.all():
-		if i.ontology_name == 'o1':
-			if len(history_of_work_ontology) == 0:
-				history_of_work_ontology.append(i)
-
+def create_and_change(request, context):
 	if request.method == 'POST':
 		choice_ontology_form = ChoiseOntologyForm(request.POST)
 		context['choice_ontology_form'] = choice_ontology_form
@@ -32,15 +23,52 @@ def index(request):
 		if len(history_of_work_ontology) > 0:
 			context['work_ontology'] = history_of_work_ontology[-1]
 			print(history_of_work_ontology)
+	else:
+		choice_ontology_form = ChoiseOntologyForm(request.POST)
+		context['choice_ontology_form'] = choice_ontology_form
+
 
 	if request.method == 'POST':
-		comment_form = CommentForm(request.POST)
-		context['comment_form'] = comment_form
-		if comment_form.is_valid():
-			text = comment_form.cleaned_data['text']
-			if text != '':
-				history_of_work_ontology[-1].comment = text
-				history_of_work_ontology[-1].save()
+		create_ontology_form = CreateOntologyForm(request.POST)
+		context['create_ontology_form'] = create_ontology_form
+		check = True
+		if create_ontology_form.is_valid():
+			new_ontology_name = create_ontology_form.cleaned_data.get('new_ontology_name')
+			if new_ontology_name != '':
+				for i in Ontology.objects.all():
+					if new_ontology_name == i.ontology_name:
+						check = False
+				if check:
+					new_ontolgy = Ontology(ontology_name = new_ontology_name)
+					new_ontolgy.save()
+					history_of_work_ontology.append(new_ontolgy)
+					context['work_ontology'] = history_of_work_ontology[-1]
+					choice_ontology_form = ChoiseOntologyForm(request.POST)
+					context['choice_ontology_form'] = choice_ontology_form
+					if choice_ontology_form.is_valid():
+						pass
+	else:
+		create_ontology_form = CreateOntologyForm(request.POST)
+		context['create_ontology_form'] = create_ontology_form
+
+def index(request):
+
+	context ={
+	}
+	context['checked'] = 1
+	if len(history_of_work_ontology) > 0:
+		context['work_ontology'] = history_of_work_ontology[-1]
+	create_and_change(request, context)
+
+	if request.method == 'POST':
+		if len(history_of_work_ontology) > 0:
+			comment_form = CommentForm(request.POST)
+			context['comment_form'] = comment_form
+			if comment_form.is_valid():
+				text = comment_form.cleaned_data['text']
+				if text != '':
+					history_of_work_ontology[-1].comment = text
+					history_of_work_ontology[-1].save()
 
 	if request.method == 'POST':
 		if len(history_of_work_ontology) > 0:
@@ -528,27 +556,18 @@ def index(request):
 					ind.save()
 					sub_sub_concept_for_new_ind.individuals.add(ind)
 
+	if len(Ontology.objects.all()) == 0:
+		return render(request, 'mainpage/initpage.html', context)
+	else:
+		return render(request, 'mainpage/index.html', context)
 
-	if request.method == 'POST':
-		create_ontology_form = CreateOntologyForm(request.POST)
-		context['create_ontology_form'] = create_ontology_form
-		check = True
-		if create_ontology_form.is_valid():
-			new_ontology_name = create_ontology_form.cleaned_data.get('new_ontology_name')
-			if new_ontology_name != '':
-				for i in Ontology.objects.all():
-					if new_ontology_name == i.ontology_name:
-						check = False
-				if check:
-					new_ontolgy = Ontology(ontology_name = new_ontology_name)
-					new_ontolgy.save()
-					history_of_work_ontology.append(new_ontolgy)
-					context['work_ontology'] = history_of_work_ontology[-1]
-					choice_ontology_form = ChoiseOntologyForm(request.POST)
-					context['choice_ontology_form'] = choice_ontology_form
-					if choice_ontology_form.is_valid():
-						pass
-
+def attributes(request):
+	context ={
+	}
+	context['checked'] = 2
+	if len(history_of_work_ontology) > 0:
+		context['work_ontology'] = history_of_work_ontology[-1]
+	create_and_change(request, context)
 	if request.method == 'POST':
 		if len(history_of_work_ontology) > 0:
 			add_attribute_con_form = addConceptIndividualAttrForm(request.POST)
@@ -658,6 +677,18 @@ def index(request):
 					ind_for_attribute.attributes.add(atr)
 					ind_for_attribute.save()
 
+	if len(Ontology.objects.all()) == 0:
+		return render(request, 'mainpage/initpage.html', context)
+	else:
+		return render(request, 'mainpage/index.html', context)
+
+def requests(request):
+	context ={
+	}
+	context['checked'] = 3
+	if len(history_of_work_ontology) > 0:
+		context['work_ontology'] = history_of_work_ontology[-1]
+	create_and_change(request, context)
 	if request.method == 'POST':
 		if len(history_of_work_ontology) > 0:
 			query_Form = QueryForm(request.POST, ontology = history_of_work_ontology[-1])
@@ -739,8 +770,25 @@ def index(request):
 					for i in query_result1:
 						query_result.append(i)
 					context['query_result'] = query_result
+	else:
+		if len(history_of_work_ontology) > 0:
+			query_Form = QueryForm(request.POST, ontology = history_of_work_ontology[-1])
+			context['query_Form'] = query_Form
 
 	if len(Ontology.objects.all()) == 0:
 		return render(request, 'mainpage/initpage.html', context)
 	else:
 		return render(request, 'mainpage/index.html', context)
+
+def relations(request):
+	context ={
+	}
+	context['checked'] = 4
+	if len(history_of_work_ontology) > 0:
+		context['work_ontology'] = history_of_work_ontology[-1]
+	create_and_change(request, context)
+	if len(Ontology.objects.all()) == 0:
+		return render(request, 'mainpage/initpage.html', context)
+	else:
+		return render(request, 'mainpage/index.html', context)
+

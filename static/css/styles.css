@@ -272,30 +272,32 @@ input[type=submit] :hover {
 }
 .treeHTML details[open] summary {} 
 
-.tabs { width: 100%; padding: 0px; margin: 0 auto; }
+.tabs { width: 90%; padding: 0px; margin: 0 auto; }
 .tabs>input { display: none; }
+
 .tabs>div {
-    display: none;
-    padding: 12px;
-    border: 1px solid #C0C0C0;
-    background: #FFFFFF;
-    z-index:1;
+  display: none;
+  padding: 12px;
+  border: 1px solid #C0C0C0;
+  background: #FFFFFF;
+  z-index:1;
 }
 .tabs>label {
-    display: inline-block;
-    padding: 7px;
-    margin: 0 -5px -1px 0;
-    text-align: center;
-    color: #666666;
-    border: 1px solid #C0C0C0;
-    background: #E0E0E0;
-    cursor: pointer;
+  display: inline-block;
+  padding: 7px;
+  margin: 0 -5px -1px 0;
+  text-align: center;
+  color: #666666;
+  border: 1px solid #C0C0C0;
+  background: #E0E0E0;
+  cursor: pointer;
 }
+
 .tabs>input:checked + label {
-    color: #000000;
-    border: 1px solid #C0C0C0;
-    border-bottom: 1px solid #FFFFFF;
-    background: #FFFFFF;
+  color: #000000;
+  border: 1px solid #C0C0C0;
+  border-bottom: 1px solid #FFFFFF;
+  background: #FFFFFF;
 }
 
 #tab_1:checked ~ #txt_1,
