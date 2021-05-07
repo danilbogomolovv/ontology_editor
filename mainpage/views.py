@@ -69,6 +69,10 @@ def index(request):
 				if text != '':
 					history_of_work_ontology[-1].comment = text
 					history_of_work_ontology[-1].save()
+	else:
+		comment_form = CommentForm(request.POST)
+		context['comment_form'] = comment_form
+
 
 	if request.method == 'POST':
 		if len(history_of_work_ontology) > 0:
@@ -86,6 +90,9 @@ def index(request):
 					con.save()
 					history_of_work_ontology[-1].concepts.add(con)
 					history_of_work_ontology[-1].save()
+	else:
+		add_concept_form = AddConceptForm(request.POST)
+		context['add_concept_form'] = add_concept_form
 
 	if request.method == 'POST':
 		if len(history_of_work_ontology) > 0:
@@ -96,6 +103,9 @@ def index(request):
 				for i in history_of_work_ontology[-1].concepts.all():
 					if del_concept_name == i.concept_name:
 						i.delete()
+	else:
+		delete_concept_form = DeleteConceptForm(request.POST)
+		context['delete_concept_form'] = delete_concept_form
 
 	if request.method == 'POST':
 		if len(history_of_work_ontology) > 0:
@@ -110,6 +120,9 @@ def index(request):
 						for j in dci.individuals.all():
 							if del_indc_name == j.individual_name:
 								j.delete()
+	else:
+		delete_concept_individual_form = DeleteConceptIndividualForm(request.POST)
+		context['delete_concept_individual_form'] = delete_concept_individual_form
 
 	if request.method == 'POST':
 		if len(history_of_work_ontology) > 0:
@@ -128,6 +141,9 @@ def index(request):
 								for k in dsci.individuals.all():
 									if del_indsc_name == k.individual_name:
 										k.delete()
+	else:
+		delete_sub_concept_individual_form = DeleteSubConceptIndividualForm(request.POST)
+		context['delete_sub_concept_individual_form'] = delete_sub_concept_individual_form
 
 	if request.method == 'POST':
 		if len(history_of_work_ontology) > 0:
@@ -150,7 +166,10 @@ def index(request):
 										for l in dssci.individuals.all():
 											if del_indssc_name == l.individual_name:
 												l.delete()
-					
+	else:
+		delete_sub_sub_concept_individual_form = DeleteSubSubConceptIndividualForm(request.POST)
+		context['delete_sub_sub_concept_individual_form'] = delete_sub_sub_concept_individual_form		
+
 	if request.method == 'POST':
 		if len(history_of_work_ontology) > 0:
 			delete_ontology_form = DeleteOntologyForm(request.POST)
@@ -160,6 +179,9 @@ def index(request):
 				for i in Ontology.objects.all():
 					if del_ontology_name == i.ontology_name:
 						i.delete()
+	else:
+		delete_ontology_form = DeleteOntologyForm(request.POST)
+		context['delete_ontology_form'] = delete_ontology_form
 
 	if request.method == 'POST':
 		if len(history_of_work_ontology) > 0:
@@ -174,6 +196,9 @@ def index(request):
 						for j in concept_for_del_sub.sub_concepts.all():
 							if del_subconcept_name == j.sub_concept_name:
 								j.delete()
+	else:
+		delete_subconcept_form = DeleteSubConceptForm(request.POST)
+		context['delete_subconcept_form'] = delete_subconcept_form
 
 	if request.method == 'POST':
 		if len(history_of_work_ontology) > 0:
@@ -192,6 +217,9 @@ def index(request):
 								for k in sub_concept_for_del_sub_sub.sub_concepts1.all():
 									if del_sub_sub_concept_name == k.sub_concept_name:
 										k.delete()
+	else:
+		delete_sub_subconcept_form = DeleteSubSubConceptForm(request.POST)
+		context['delete_sub_subconcept_form'] = delete_sub_subconcept_form
 
 	if request.method == 'POST':
 		if len(history_of_work_ontology) > 0:
@@ -232,6 +260,9 @@ def index(request):
 													for atr in individual.attributes.all():
 														f1.write('----------Аттрибут экземпляра (подподкласса) :' + concept.concept_name + ' : ' + sub_concept.sub_concept_name + ' : ' + sub_concept1.sub_concept_name + ' : ' + individual.individual_name +  ' : ' + atr.attribute_name + ' : ' + atr.attribute_value + '\n')
 												#f1.write('\n')
+	else:
+		save_form = SaveForm(request.POST)
+		context['save_form'] = save_form
 
 	if request.method == 'POST':
 		open_form = OpenForm(request.POST, request.FILES)
@@ -448,7 +479,9 @@ def index(request):
 						if create_ontology_check:
 							history_of_work_ontology.append(ont)
 							context['work_ontology'] = history_of_work_ontology[-1]
-
+	else:
+		open_form = OpenForm(request.POST, request.FILES)
+		context['open_form'] = open_form
 
 	if request.method == 'POST':
 		if len(history_of_work_ontology) > 0:
@@ -479,6 +512,9 @@ def index(request):
 					subcon = SubConcept(sub_concept_name = new_sub_concept_name)
 					subcon.save()
 					concept_for_new_individual.sub_concepts.add(subcon)
+	else:
+		add_individual_or_sub_form = AddIndividualOrSubForm(request.POST)
+		context['add_individual_or_sub_form'] = add_individual_or_sub_form
 
 	if request.method == 'POST':
 		if len(history_of_work_ontology) > 0:
@@ -517,6 +553,9 @@ def index(request):
 							subcon = SubConcept1(sub_concept_name = new_sub_sub_concept_name)
 							subcon.save()
 							sub_concept_for_new_sub.sub_concepts1.add(subcon)
+	else:
+		add_individual_or_sub_sub_form = AddIndividualOrSubSubForm(request.POST)
+		context['add_individual_or_sub_sub_form'] = add_individual_or_sub_sub_form
 
 	if request.method == 'POST':
 		if len(history_of_work_ontology) > 0:
@@ -555,6 +594,9 @@ def index(request):
 					ind = Individual(individual_name = individual_name_for_sub_sub)
 					ind.save()
 					sub_sub_concept_for_new_ind.individuals.add(ind)
+	else:
+		add_individual_for_sub_sub_form = AddIndividualForSubSubForm(request.POST)
+		context['add_individual_for_sub_sub_form'] = add_individual_for_sub_sub_form
 
 	if len(Ontology.objects.all()) == 0:
 		return render(request, 'mainpage/initpage.html', context)
@@ -598,6 +640,9 @@ def attributes(request):
 					atr.save()
 					individual_for_attribute.attributes.add(atr)
 					individual_for_attribute.save()
+	else:
+		add_attribute_con_form = addConceptIndividualAttrForm(request.POST)
+		context['add_attribute_con_form'] = add_attribute_con_form
 
 	if request.method == 'POST':
 		if len(history_of_work_ontology) > 0:
@@ -634,6 +679,9 @@ def attributes(request):
 					atr.save()
 					individ_for_attribute.attributes.add(atr)
 					individ_for_attribute.save()
+	else:
+		add_attribute_subcon_form = addSubConceptIndividualAttrForm(request.POST)
+		context['add_attribute_subcon_form'] = add_attribute_subcon_form
 
 	if request.method == 'POST':
 		if len(history_of_work_ontology) > 0:
@@ -676,6 +724,9 @@ def attributes(request):
 					atr.save()
 					ind_for_attribute.attributes.add(atr)
 					ind_for_attribute.save()
+	else:
+		add_attribute_subsubcon_form = addSubSubConceptIndividualAttrForm(request.POST)
+		context['add_attribute_subsubcon_form'] = add_attribute_subsubcon_form
 
 	if len(Ontology.objects.all()) == 0:
 		return render(request, 'mainpage/initpage.html', context)

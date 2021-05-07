@@ -212,16 +212,34 @@ input[type=submit] :hover {
   background: rgba(255,255,255,.2); 
 }
 
-.form-popup {
+a {
+  text-decoration: none;
+  color: black;
+}
+a:hover {
+  text-decoration: underline;
+}
+.del_form {
   display: none;
-  position: fixed;
+
   background: white;
   border: 2px solid #ccc;
-  bottom: 400px;
-  right: 450px;
-  z-index:2;
+
+
   border-radius: 5px;
 }
+
+.form-popup {
+  display: none;
+
+  background: white;
+  border: 2px solid #ccc;
+
+
+  border-radius: 5px;
+}
+
+
 
 .relation {
 	border: 2px solid #ccc;
@@ -238,8 +256,25 @@ input[type=submit] :hover {
   display: none;
 }
 
-.treeHTML {
+.ontology_buttons{
+  display: block;
+}
+
+.right_content{
+  display: inline-block;
+  float: right;
   line-height: normal;
+  border: 2px solid #ccc;
+  width: 53%;
+  height: 90%;
+}
+
+
+.treeHTML {
+  display: inline-block;
+  line-height: normal;
+  border: 2px solid #ccc;
+  width: 45%;
 }
 .treeHTML details {
   display: block;
@@ -272,7 +307,7 @@ input[type=submit] :hover {
 }
 .treeHTML details[open] summary {} 
 
-.tabs { width: 90%; padding: 0px; margin: 0 auto; }
+.tabs { width: 97%; padding: 0px; margin: 0 auto; }
 .tabs>input { display: none; }
 
 .tabs>div {

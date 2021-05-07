@@ -8,15 +8,7 @@
   <title>Редактор онтологий</title>
 </head>
 <body>
-	<div class="form-popup" id="add_concept_Form">   
-		    <form method=POST action="" class="form-container">
-		    	{% csrf_token %}
-		    		<p id="lb_add_concept"></p>
-			        {{ add_concept_form.as_p }} 
-			        <button type="submit" class="create-choice-button">Add concept</button>
-			        <button type="button" class="del_button" onclick="closeConceptForm()">Close</button>
-		    </form>
-	</div>
+
 
 	<div class="form-popup" id="comment_Form">   
 		    <form method=POST action="" class="form-container">
@@ -44,137 +36,6 @@
 			        <button type="button" class="del_button" onclick="closeOpenForm()">Close</button>
 		    </form>
 	</div>
-
-	<div class="form-popup" id="del_concept_Form">   
-		    <form method=POST action="" class="form-container">
-		    	{% csrf_token %}
-			        {{ delete_concept_form.as_p }} 
-			        <label>You definitely want to delete this Concept?</label><br>
-			        <button type="submit" class="create-choice-button">Delete</button>
-			        <button type="button" class="del_button" onclick="closeDelConceptForm()">Close</button>
-		    </form>
-	</div>
-
-	<div class="form-popup" id="del_ontology_Form">   
-		    <form method=POST action="" class="form-container">
-		    	{% csrf_token %}
-			        {{ delete_ontology_form.as_p }} 
-			        <label>You definitely want to delete this ontology?</label><br>
-			        <button type="submit" class="create-choice-button">Delete</button>
-			        <button type="button" class="del_button" onclick="closeDelOntologyForm()">Close</button>
-		    </form>
-	</div>
-
-	<div class="form-popup" id="del_con_ind_Form">   
-		    <form method=POST action="" class="form-container">
-		    	{% csrf_token %}
-			        {{ delete_concept_individual_form.as_p }} 
-			        <label>You definitely want to delete this individual?</label><br>
-			        <button type="submit" class="create-choice-button">Delete</button>
-			        <button type="button" class="del_button" onclick="closeDeleteConceptIndividual()">Close</button>
-		    </form>
-	</div>
-
-	<div class="form-popup" id="del_sub_con_ind_Form">   
-		    <form method=POST action="" class="form-container">
-		    	{% csrf_token %}
-			        {{ delete_sub_concept_individual_form.as_p }} 
-			        <label>You definitely want to delete this individual?</label><br>
-			        <button type="submit" class="create-choice-button">Delete</button>
-			        <button type="button" class="del_button" onclick="closeDeleteSubConceptIndividual()">Close</button>
-		    </form>
-	</div>
-
-	<div class="form-popup" id="del_sub_sub_con_ind_Form">   
-		    <form method=POST action="" class="form-container">
-		    	{% csrf_token %}
-			        {{ delete_sub_sub_concept_individual_form.as_p }} 
-			        <label>You definitely want to delete this individual?</label><br>
-			        <button type="submit" class="create-choice-button">Delete</button>
-			        <button type="button" class="del_button" onclick="closeDeleteSubSubConceptIndividual()">Close</button>
-		    </form>
-	</div>
-
-	<div class="form-popup" id="del_subconcept_Form">   
-		    <form method=POST action="" class="form-container">
-		    	{% csrf_token %}
-			        {{ delete_subconcept_form.as_p }} 
-			        <label>You definitely want to delete this SubConcept?</label><br>
-			        <button type="submit" class="create-choice-button">Delete</button>
-			        <button type="button" class="del_button" onclick="closeDelSubConceptForm()">Close</button>
-		    </form>
-	</div>
-
-	<div class="form-popup" id="del_sub_subconcept_Form">   
-		    <form method=POST action="" class="form-container">
-		    	{% csrf_token %}
-			        {{ delete_sub_subconcept_form.as_p }} 
-			        <label>You definitely want to delete this SubConcept?</label><br>
-			        <button type="submit" class="create-choice-button">Delete</button>
-			        <button type="button" class="del_button" onclick="closeDelSubSubConceptForm()">Close</button>
-		    </form>
-	</div>
-
-	<div class="form-popup" id="add_individual_or_sub_Form">
-		    <form method=POST action="" class="form-container">
-		    	{% csrf_token %}
-		    		<p id="lb_add_ind_or_sub"></p>
-			        {{ add_individual_or_sub_form.as_p }}
-			        <button type="submit" class="create-choice-button">Add</button>
-			        <button type="button" class="del_button" onclick="closeIndividualOrSubForm()">Close</button>
-		    </form>
-	</div>
-
-	<div class="form-popup" id="add_individual_or_sub_sub_Form">
-		    <form method=POST action="" class="form-container">
-		    	{% csrf_token %}
-		    		<p id="lb_add_ind_or_sub_sub"></p>
-			        {{ add_individual_or_sub_sub_form.as_p }}
-			        <button type="submit" class="create-choice-button">Add</button>
-			        <button type="button" class="del_button" onclick="closeIndividualOrSubSubForm()">Close</button>
-		    </form>
-	</div>
-
-	<div class="form-popup" id="add_individual_for_sub_sub_Form">
-		    <form method=POST action="" class="form-container">
-		    	{% csrf_token %}
-		    		<p id="lb_add_ind_for_sub_sub"></p>
-			        {{ add_individual_for_sub_sub_form.as_p }}
-			        <button type="submit" class="create-choice-button">Add</button>
-			        <button type="button" class="del_button" onclick="closeIndividualForSubSubForm()">Close</button>
-		    </form>
-	</div>
-
-	<div class="form-popup" id="add_atr_con_Form">
-		    <form method=POST action="" class="form-container">
-		    	{% csrf_token %}
-		    		<p id="lb_add_attr_for_con"></p>
-			        {{ add_attribute_con_form.as_p }}
-			        <button type="submit" class="create-choice-button">Add</button>
-			        <button type="button" class="del_button" onclick="closeAddConceptIndividualAttr()">Close</button>
-		    </form>
-	</div>
-
-	<div class="form-popup" id="add_atr_subcon_Form">
-		    <form method=POST action="" class="form-container">
-		    	{% csrf_token %}
-		    		<p id="lb_add_attr_for_subcon"></p>
-			        {{ add_attribute_subcon_form.as_p }}
-			        <button type="submit" class="create-choice-button">Add</button>
-			        <button type="button" class="del_button" onclick="closeAddSubConceptIndividualAttr()">Close</button>
-		    </form>
-	</div>
-
-	<div class="form-popup" id="add_atr_subsubcon_Form">
-		    <form method=POST action="" class="form-container">
-		    	{% csrf_token %}
-		    		<p id="lb_add_attr_for_subsubcon"></p>
-			        {{ add_attribute_subsubcon_form.as_p }}
-			        <button type="submit" class="create-choice-button">Add</button>
-			        <button type="button" class="del_button" onclick="closeAddSubSubConceptIndividualAttr()">Close</button>
-		    </form>
-	</div>
-
 
 <div class="tabs">
 
@@ -205,41 +66,29 @@
     <label for="tab_4">Relations</label>
 
     <div id="txt_1">
-		<div class="ontology">
+    	<div class="ontology_buttons">
 			<button class="openSOC-button" onclick="openSaveForm()">Save</button>
 			<button class="openSOC-button" onclick="openOpenForm()">Open</button>
 			<button class="openSOC-button" onclick="openCommentForm()">Add Comment</button>
-	            <div class="treeHTML">Ontology : {{work_ontology.ontology_name}} <button class="open-button" onclick="openConceptForm('{{work_ontology.ontology_name}}')">+</button> <button type="submit" class ="del_button" onclick="deleteOntology('{{work_ontology.ontology_name}}')">del</button>
-
+		</div>
+	            <div class="treeHTML">
+	             Ontology : <a href="#" onclick="openConceptForm('{{work_ontology.ontology_name}}'), deleteOntology('{{work_ontology.ontology_name}}')"> {{work_ontology.ontology_name}}</a>
 		            {% for concept in work_ontology.concepts.all %}
-		            		<div>Concept : {{concept.concept_name}} <button type="submit" 
-		            			class="open-button"
-		            			id="{{concept.concept_name}}"
-		            			onclick="openIndividualOrSubForm('{{concept.concept_name}}')">+</button> <button type="submit" class ="del_button" onclick="deleteConcept('{{concept.concept_name}}')">del</button>
+		            		<div>Concept : <a href="#" onclick="openIndividualOrSubForm('{{concept.concept_name}}'), deleteConcept('{{concept.concept_name}}')">{{concept.concept_name}}</a>
 		            			<details><summary></summary>
 		            		{% if concept.sub_concepts.all %}
 		            		
 		            			{% for subconcept in concept.sub_concepts.all %}
-		            				<div>Concept : {{ subconcept.sub_concept_name }} <button type="submit" 
-		            			class="open-button"
-		            			onclick="openIndividualOrSubSubForm('{{ subconcept.sub_concept_name }}', '{{concept.concept_name}}')">+</button> <button type="submit" class ="del_button" onclick="deleteSubConcept('{{ subconcept.sub_concept_name }}','{{concept.concept_name}}')">del</button>
-
-
+		            				<div>Concept : <a href="#" onclick="openIndividualOrSubSubForm('{{ subconcept.sub_concept_name }}', '{{concept.concept_name}}'), deleteSubConcept('{{ subconcept.sub_concept_name }}','{{concept.concept_name}}')">{{ subconcept.sub_concept_name }} </a> 
 
 
 		            	{% if subconcept.sub_concepts1.all %}
 		            		<details><summary></summary>
 		            			{% for subconcept1 in subconcept.sub_concepts1.all %}
-		            				<div> Concept : {{ subconcept1.sub_concept_name }} <button type="submit" 
-		            			class="open-button"
-		            			onclick="openIndividualForSubSubForm('{{ subconcept1.sub_concept_name }}','{{ subconcept.sub_concept_name }}','{{concept.concept_name}}')">+</button> <button type="submit" 
-		            			class ="del_button"
-		            			onclick="deleteSubSubConcept('{{ subconcept1.sub_concept_name }}','{{ subconcept.sub_concept_name }}','{{concept.concept_name}}')">del</button>
+		            				<div> Concept : <a href="#" onclick="openIndividualForSubSubForm('{{ subconcept1.sub_concept_name }}','{{ subconcept.sub_concept_name }}','{{concept.concept_name}}'), deleteSubSubConcept('{{ subconcept1.sub_concept_name }}','{{ subconcept.sub_concept_name }}','{{concept.concept_name}}')">{{ subconcept1.sub_concept_name }} </a>
 				            		<details><summary></summary>            	
 				            		{% for individual in subconcept1.individuals.all %}
-				            				<div>Individual : {{individual.individual_name}} <button type="submit" 
-		            			class ="del_button"
-		            			onclick="deleteSubSubConceptIndividual('{{ subconcept1.sub_concept_name }}', '{{subconcept.sub_concept_name}}','{{concept.concept_name}}', '{{individual.individual_name}}')">del</button>
+				            				<div>Individual : <a href="#" onclick="deleteSubSubConceptIndividual('{{ subconcept1.sub_concept_name }}', '{{subconcept.sub_concept_name}}','{{concept.concept_name}}', '{{individual.individual_name}}')">{{individual.individual_name}}</a>
 				            					<details><summary></summary>
 				            					{% for atr in individual.attributes.all %}
 			            							 <div>Attribute : {{atr.attribute_name}} : {{atr.attribute_value}}</div>
@@ -252,9 +101,7 @@
 				            	{% endfor %} 
 				         	            	
 				            		{% for individual in subconcept.individuals.all %}
-				            				<div>Individual : {{individual.individual_name}} <button type="submit" 
-		            			class ="del_button"
-		            			onclick="deleteSubConceptIndividual('{{subconcept.sub_concept_name}}','{{concept.concept_name}}', '{{individual.individual_name}}')">del</button>
+				            				<div>Individual : <a href="#" onclick="deleteSubConceptIndividual('{{subconcept.sub_concept_name}}','{{concept.concept_name}}', '{{individual.individual_name}}')">{{individual.individual_name}} </a>
 				            					<details><summary></summary>
 				            					{% for atr in individual.attributes.all %}
 			            							 <div>Attribute : {{atr.attribute_name}} : {{atr.attribute_value}}</div>
@@ -266,9 +113,7 @@
 		            		{% else %}
 				            		<details><summary></summary>            	
 				            		{% for individual in subconcept.individuals.all %}
-				            				<div>Individual : {{individual.individual_name}} <button type="submit" 
-		            			class ="del_button"
-		            			onclick="deleteConceptIndividual('{{concept.concept_name}}', '{{individual.individual_name}}')">del</button>
+				            				<div>Individual : <a href="#" onclick="deleteSubConceptIndividual('{{subconcept.sub_concept_name}}','{{concept.concept_name}}', '{{individual.individual_name}}')">{{individual.individual_name}} </a>
 				            					<details><summary></summary>
 				            					{% for atr in individual.attributes.all %}
 			            							 <div>Attribute : {{atr.attribute_name}} : {{atr.attribute_value}}</div>
@@ -285,9 +130,7 @@
 				           
 				           
 		            		{% for individual in concept.individuals.all %}
-		            				<div>Individual : {{individual.individual_name}} <button type="submit" 
-		            			class ="del_button"
-		            			onclick="deleteConceptIndividual('{{concept.concept_name}}', '{{individual.individual_name}}')">del</button>
+		            				<div>Individual : <a href="#" onclick="deleteConceptIndividual('{{concept.concept_name}}', '{{individual.individual_name}}')">{{individual.individual_name}}</a>
 		            					<details><summary></summary>
 		            					{% for atr in individual.attributes.all %}
 	            							 <div>Attribute : {{atr.attribute_name}} : {{atr.attribute_value}}</div>
@@ -300,9 +143,7 @@
 		            		{% else %}
 		            		            	
 		            		{% for individual in concept.individuals.all %}
-		            				<div>Individual : {{individual.individual_name}} <button type="submit" 
-		            			class ="del_button"
-		            			onclick="deleteConceptIndividual('{{concept.concept_name}}', '{{individual.individual_name}}')">del</button>
+		            				<div>Individual :<a href="#" onclick="deleteConceptIndividual('{{concept.concept_name}}', '{{individual.individual_name}}')">{{individual.individual_name}}</a>
 		            					<details><summary></summary>
 		            					{% for atr in individual.attributes.all %}
 	            							 <div>Аттриубт : {{atr.attribute_name}} : {{atr.attribute_value}}</div>
@@ -317,13 +158,123 @@
 		            {% endfor %}
 		            <p>{{ work_ontology.comment }}</p>
 		        </div>
-		</div>
+
+		        <div class="right_content">
+					<div class="form-popup" id="add_concept_Form">   
+						<button type="button" class="del_button" onclick="closeConceptForm()">Close</button>
+						    <form method=POST action="" class="form-container">
+						    	{% csrf_token %}
+						    		<p id="lb_add_concept"></p>
+							        {{ add_concept_form.as_p }} 
+							        <button type="submit" class="create-choice-button">Add concept</button>
+						    </form>
+					</div>
+
+					<div class="del_form" id="del_ontology_Form">   
+						    <form method=POST action="" class="form-container">
+						    	{% csrf_token %}
+							        {{ delete_ontology_form.as_p }} 
+							        <label>You definitely want to delete this ontology?</label><br>
+							        <button type="submit" class="create-choice-button">Delete</button>
+						    </form>
+					</div>
+
+					<div class="form-popup" id="add_individual_or_sub_Form">
+						<button type="button" class="del_button" onclick="closeIndividualOrSubForm()">Close</button>
+						    <form method=POST action="" class="form-container">
+						    	{% csrf_token %}
+						    		<p id="lb_add_ind_or_sub"></p>
+							        {{ add_individual_or_sub_form.as_p }}
+							        <button type="submit" class="create-choice-button">Add</button>
+							    
+						    </form>
+					</div>
+
+					<div class="del_form" id="del_concept_Form">   
+						    <form method=POST action="" class="form-container">
+						    	{% csrf_token %}
+							        {{ delete_concept_form.as_p }} 
+							        <label>You definitely want to delete this Concept?</label><br>
+							        <button type="submit" class="create-choice-button">Delete</button>
+						    </form>
+					</div>
+
+					<div class="form-popup" id="add_individual_or_sub_sub_Form">
+						<button type="button" class="del_button" onclick="closeIndividualOrSubSubForm()">Close</button>
+						    <form method=POST action="" class="form-container">
+						    	{% csrf_token %}
+						    		<p id="lb_add_ind_or_sub_sub"></p>
+							        {{ add_individual_or_sub_sub_form.as_p }}
+							        <button type="submit" class="create-choice-button">Add</button>						        
+						    </form>
+					</div>
+
+
+					<div class="del_form" id="del_subconcept_Form">   
+						    <form method=POST action="" class="form-container">
+						    	{% csrf_token %}
+							        {{ delete_subconcept_form.as_p }} 
+							        <label>You definitely want to delete this SubConcept?</label><br>
+							        <button type="submit" class="create-choice-button">Delete</button>
+						    </form>
+					</div>
+
+					<div class="form-popup" id="add_individual_for_sub_sub_Form">
+						<button type="button" class="del_button" onclick="closeIndividualForSubSubForm()">Close</button>
+						    <form method=POST action="" class="form-container">
+						    	{% csrf_token %}
+						    		<p id="lb_add_ind_for_sub_sub"></p>
+							        {{ add_individual_for_sub_sub_form.as_p }}
+							        <button type="submit" class="create-choice-button">Add</button>
+						    </form>
+					</div>
+
+					<div class="del_form" id="del_sub_subconcept_Form">   
+						    <form method=POST action="" class="form-container">
+						    	{% csrf_token %}
+							        {{ delete_sub_subconcept_form.as_p }} 
+							        <label>You definitely want to delete this SubConcept?</label><br>
+							        <button type="submit" class="create-choice-button">Delete</button>
+						    </form>
+					</div>
+
+					<div class="del_form" id="del_sub_sub_con_ind_Form">   
+						    <form method=POST action="" class="form-container">
+						    	{% csrf_token %}
+							        {{ delete_sub_sub_concept_individual_form.as_p }} 
+							        <label>You definitely want to delete this individual?</label><br>
+							        <button type="submit" class="create-choice-button">Delete</button>
+							        <button type="button" class="del_button" onclick="closeDeleteSubSubConceptIndividual()">Close</button>
+						    </form>
+					</div>
+
+					<div class="del_form" id="del_con_ind_Form">   
+						    <form method=POST action="" class="form-container">
+						    	{% csrf_token %}
+							        {{ delete_concept_individual_form.as_p }} 
+							        <label>You definitely want to delete this individual?</label><br>
+							        <button type="submit" class="create-choice-button">Delete</button>
+							        <button type="button" class="del_button" onclick="closeDeleteConceptIndividual()">Close</button>
+						    </form>
+					</div>
+
+					<div class="del_form" id="del_sub_con_ind_Form">   
+						    <form method=POST action="" class="form-container">
+						    	{% csrf_token %}
+							        {{ delete_sub_concept_individual_form.as_p }} 
+							        <label>You definitely want to delete this individual?</label><br>
+							        <button type="submit" class="create-choice-button">Delete</button>
+							        <button type="button" class="del_button" onclick="closeDeleteSubConceptIndividual()">Close</button>
+						    </form>
+					</div>
+
+
+		        </div>
 	</div>
-	
+
 
     <div id="txt_2">
 
-			<div class="ontology">
 				            <div class="treeHTML">Ontology : {{work_ontology.ontology_name}} 
 					            {% for concept in work_ontology.concepts.all %}
 					            		<div>Concept : {{concept.concept_name}} 
@@ -337,9 +288,7 @@
 					            				<div> Concept : {{ subconcept1.sub_concept_name }}
 							            		<details><summary></summary>            	
 							            		{% for individual in subconcept1.individuals.all %}
-							            				<div>Individual : {{individual.individual_name}} <button type="submit" 
-		            			class="open-button"
-		            			onclick="addSubSubConceptIndividualAttr( '{{ subconcept1.sub_concept_name }}', '{{subconcept.sub_concept_name}}', '{{concept.concept_name}}', '{{individual.individual_name}}')">+</button>
+							            				<div>Individual :<a href="#" onclick="addSubSubConceptIndividualAttr( '{{ subconcept1.sub_concept_name }}', '{{subconcept.sub_concept_name}}', '{{concept.concept_name}}', '{{individual.individual_name}}')">{{individual.individual_name}}</a> 
 							            					<details><summary></summary>
 							            					{% for atr in individual.attributes.all %}
 						            							 <div>Attribute : {{atr.attribute_name}} : {{atr.attribute_value}}</div>
@@ -352,9 +301,7 @@
 							            	{% endfor %} 
 							         	            	
 							            		{% for individual in subconcept.individuals.all %}
-							            				<div>Individual : {{individual.individual_name}} <button type="submit" 
-		            			class="open-button"
-		            			onclick="addSubConceptIndividualAttr('{{subconcept.sub_concept_name}}', '{{concept.concept_name}}', '{{individual.individual_name}}')">+</button>
+							            				<div>Individual : <a href="#" onclick="addSubConceptIndividualAttr('{{subconcept.sub_concept_name}}', '{{concept.concept_name}}', '{{individual.individual_name}}')">{{individual.individual_name}}</a>
 							            					<details><summary></summary>
 							            					{% for atr in individual.attributes.all %}
 						            							 <div>Attribute : {{atr.attribute_name}} : {{atr.attribute_value}}</div>
@@ -366,9 +313,7 @@
 					            		{% else %}
 							            		<details><summary></summary>            	
 							            		{% for individual in subconcept.individuals.all %}
-							            				<div>Individual : {{individual.individual_name}} <button type="submit" 
-		            			class="open-button"
-		            			onclick="addSubConceptIndividualAttr( '{{subconcept.sub_concept_name}}', '{{concept.concept_name}}', '{{individual.individual_name}}')">+</button>
+							            				<div>Individual : <a href="#" onclick="addSubConceptIndividualAttr( '{{subconcept.sub_concept_name}}', '{{concept.concept_name}}', '{{individual.individual_name}}')">{{individual.individual_name}}</a>
 							            					<details><summary></summary>
 							            					{% for atr in individual.attributes.all %}
 						            							 <div>Attribute : {{atr.attribute_name}} : {{atr.attribute_value}}</div>
@@ -385,9 +330,7 @@
 							           
 							           
 					            		{% for individual in concept.individuals.all %}
-					            				<div>Individual : {{individual.individual_name}} <button type="submit" 
-		            			class="open-button"
-		            			onclick="addConceptIndividualAttr('{{concept.concept_name}}', '{{individual.individual_name}}')">+</button>
+					            				<div>Individual : <a href="#" onclick="addConceptIndividualAttr('{{concept.concept_name}}', '{{individual.individual_name}}')">{{individual.individual_name}}</a>
 					            					<details><summary></summary>
 					            					{% for atr in individual.attributes.all %}
 				            							 <div>Attribute : {{atr.attribute_name}} : {{atr.attribute_value}}</div>
@@ -400,9 +343,7 @@
 					            		{% else %}
 					            		            	
 					            		{% for individual in concept.individuals.all %}
-					            				<div>Individual : {{individual.individual_name}} <button type="submit" 
-		            			class="open-button"
-		            			onclick="addConceptIndividualAttr('{{concept.concept_name}}', '{{individual.individual_name}}')">+</button>
+					            				<div>Individual : <a href="#" onclick="addConceptIndividualAttr('{{concept.concept_name}}', '{{individual.individual_name}}')">{{individual.individual_name}}</a>
 					            					<details><summary></summary>
 					            					{% for atr in individual.attributes.all %}
 				            							 <div>Аттриубт : {{atr.attribute_name}} : {{atr.attribute_value}}</div>
@@ -416,6 +357,37 @@
 					            		</div>
 					            {% endfor %}
 					        </div>
+
+					<div class="right_content">
+						<div class="form-popup" id="add_atr_con_Form">
+							    <form method=POST action="" class="form-container">
+							    	{% csrf_token %}
+							    		<p id="lb_add_attr_for_con"></p>
+								        {{ add_attribute_con_form.as_p }}
+								        <button type="submit" class="create-choice-button">Add</button>
+								        <button type="button" class="del_button" onclick="closeAddConceptIndividualAttr()">Close</button>
+							    </form>
+						</div>
+
+						<div class="form-popup" id="add_atr_subcon_Form">
+							    <form method=POST action="" class="form-container">
+							    	{% csrf_token %}
+							    		<p id="lb_add_attr_for_subcon"></p>
+								        {{ add_attribute_subcon_form.as_p }}
+								        <button type="submit" class="create-choice-button">Add</button>
+								        <button type="button" class="del_button" onclick="closeAddSubConceptIndividualAttr()">Close</button>
+							    </form>
+						</div>
+
+						<div class="form-popup" id="add_atr_subsubcon_Form">
+							    <form method=POST action="" class="form-container">
+							    	{% csrf_token %}
+							    		<p id="lb_add_attr_for_subsubcon"></p>
+								        {{ add_attribute_subsubcon_form.as_p }}
+								        <button type="submit" class="create-choice-button">Add</button>
+								        <button type="button" class="del_button" onclick="closeAddSubSubConceptIndividualAttr()">Close</button>
+							    </form>
+						</div>
 					</div>
 	</div>
 
@@ -487,19 +459,11 @@ function deleteConcept(concept_name) {
 	document.getElementById("del_concept_Form").style.display = "block";
     document.getElementById("id_del_concept_name").value = concept_name; }
 
-function closeDelConceptForm() {
-    document.getElementById("del_concept_Form").style.display = "none";
-    document.getElementById("id_del_concept_name").value = '';
-}
 
 function deleteOntology(ontology_name) {
 	document.getElementById("del_ontology_Form").style.display = "block";
     document.getElementById("id_del_ontology_name").value = ontology_name; }
 
-function closeDelOntologyForm() {
-    document.getElementById("del_ontology_Form").style.display = "none";
-    document.getElementById("id_del_ontology_name").value = '';
-}
 
 function deleteConceptIndividual(concept_name, ind_name) {
 	document.getElementById("del_con_ind_Form").style.display = "block";
@@ -581,7 +545,7 @@ function deleteSubSubConceptIndividual(sub_sub_concept_name, sub_concept_name, c
 }
 
 function closeDeleteSubSubConceptIndividual() {
-    document.getElementById("del_ontolgoy_Form").style.display = "none";
+    document.getElementById("del_sub_sub_con_ind_Form").style.display = "none";
  	document.getElementById("id_del_subsubcon_ind_name").value = '';
 	document.getElementById("id_del_subcon_ind_name").value = '';
     document.getElementById("id_del_con_ind_name").value = '';
@@ -593,33 +557,25 @@ function deleteSubConcept(sub_concept_name, concept_name) {
     document.getElementById("id_concept_name_for_del_sub").value = concept_name;
      }
 
-function closeDelSubConceptForm() {
-    document.getElementById("del_subconcept_Form").style.display = "none";
-    document.getElementById("id_del_subconcept_name").value = '';
-    document.getElementById("id_concept_name_for_del_sub").value = '';
-}
 
 function deleteSubSubConcept(sub_sub_concept_name, sub_concept_name, concept_name) {
 	document.getElementById("del_sub_subconcept_Form").style.display = "block";
     document.getElementById("id_concept_name_for_del_sub_sub").value = concept_name;
     document.getElementById("id_sub_concept_name_for_del_sub_sub").value = sub_concept_name;
     document.getElementById("id_del_sub_sub_concept_name").value = sub_sub_concept_name;
-     }
+    }
 
-function closeDelSubSubConceptForm() {
-    document.getElementById("del_subconcept_Form").style.display = "none";
-    document.getElementById("id_concept_name_for_del_sub_sub").value = '';
-    document.getElementById("id_sub_concept_name_for_del_sub_sub").value = '';
-    document.getElementById("id_del_sub_sub_concept_name").value = '';
-}
 
 function openConceptForm(ontology_name) {
     document.getElementById("add_concept_Form").style.display = "block";
     document.getElementById("lb_add_concept").textContent = "Add to " + ontology_name;
+
 }
 
 function closeConceptForm() {
     document.getElementById("add_concept_Form").style.display = "none";
+    document.getElementById("del_ontology_Form").style.display = "none";
+    document.getElementById("id_del_ontology_name").value = '';
 }
 
 function openIndividualOrSubForm(concept_name_for) {
@@ -630,6 +586,8 @@ function openIndividualOrSubForm(concept_name_for) {
 
 function closeIndividualOrSubForm() {
     document.getElementById("add_individual_or_sub_Form").style.display = "none";
+    document.getElementById("del_concept_Form").style.display = "none";
+    document.getElementById("id_del_concept_name").value = '';
 }
 
 function openIndividualOrSubSubForm(sub_concept_name_for, concept_name_for) {
@@ -641,6 +599,9 @@ function openIndividualOrSubSubForm(sub_concept_name_for, concept_name_for) {
 
 function closeIndividualOrSubSubForm() {
     document.getElementById("add_individual_or_sub_sub_Form").style.display = "none";
+    document.getElementById("del_subconcept_Form").style.display = "none";
+    document.getElementById("id_del_subconcept_name").value = '';
+    document.getElementById("id_concept_name_for_del_sub").value = '';
 }
 
 function openIndividualForSubSubForm(sub_sub_concept_name_for, sub_concept_name_for, concept_name_for) {
@@ -653,15 +614,19 @@ function openIndividualForSubSubForm(sub_sub_concept_name_for, sub_concept_name_
 
 function closeIndividualForSubSubForm() {
     document.getElementById("add_individual_for_sub_sub_Form").style.display = "none";
+    document.getElementById("del_sub_subconcept_Form").style.display = "none";
     document.getElementById("id_concept_name_for_sub").value = '';
     document.getElementById("id_sub_concept_individual_name").value = '';
     document.getElementById("id_sub_sub_concept_individual_name").value = '';
+    document.getElementById("id_concept_name_for_del_sub_sub").value = '';
+    document.getElementById("id_sub_concept_name_for_del_sub_sub").value = '';
+    document.getElementById("id_del_sub_sub_concept_name").value = '';
 }
 
 
 function openSaveForm() {
     document.getElementById("save_Form").style.display = "block";
-     }
+    }
 
 function closeSaveForm() {
     document.getElementById("save_Form").style.display = "none";
